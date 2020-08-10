@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import LogoImg from '../../assets/images/logo.svg';
 import LandingImg from '../../assets/images/landing.svg';
 import StudyIcon from '../../assets/images/icons/study.svg';
 import GiveClassesIcon from '../../assets/images/icons/give-classes.svg';
 import PurpleHartIcon from '../../assets/images/icons/purple-heart.svg';
-import './styles.css';
 import { Link } from 'react-router-dom';
+import api from '../../services/api';
+import './styles.css';
 
 function Lading() {
+	const [totalConnections, setTotalConnections] = useState(0);
+
+	useEffect(() => {
+		api.get('/connection').then((response) => {
+			setTotalConnections(response['data']);
+		});
+	}, []);
+
 	return (
 		<div id="page-landing">
 			<div id="page-landing-content" className="container">
@@ -32,7 +41,7 @@ function Lading() {
 				</div>
 
 				<span className="total-connections">
-					total de 200 conexões já realizadas{' '}
+					total de {totalConnections} conexões já realizadas{' '}
 					<img src={PurpleHartIcon} alt="" />
 				</span>
 			</div>

@@ -18,6 +18,7 @@
 		"typescript": "^3.9.7"
 	},
 	"devDependencies": {
+		"cors": "^2.8.5",
 		"ts-node-dev": "^1.0.0-pre.56"
 	}
 }
