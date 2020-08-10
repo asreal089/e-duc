@@ -73,11 +73,11 @@ function TeacherList() {
 					<button type="submit">Buscar</button>
 				</form>
 			</PageHeader>
-			<main>
+			<div>
 				{teachers.map((teacher: Teacher) => {
 					return <TeacherItem key={teacher.id} teacher={teacher} />;
 				})}
-			</main>
+			</div>
 		</div>
 	);
 }

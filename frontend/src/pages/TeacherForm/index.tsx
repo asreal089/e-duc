@@ -40,7 +40,6 @@ function TeacherForm() {
 			.catch(() => {
 				alert('erro ao criar cadastros');
 			});
-		console.log(name, avatar, whatsapp, bio, subject, cost, scheduleItems);
 	}
 
 	function setScheduleItemValue(

@@ -2,6 +2,7 @@ import React from 'react';
 import WhatsAppIcon from '../../../assets/images/icons/whatsapp.svg';
 
 import './styles.css';
+import api from '../../../services/api';
 
 export interface Teacher {
 	id: number;
@@ -15,6 +16,11 @@ export interface Teacher {
 
 interface TeacherItemProps {
 	teacher: Teacher;
+}
+
+async function handleContact(user_id: number, whatsapp: string) {
+	const res = await api.post('connection', { user_id });
+	alert('conexão feita');
 }
 
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
@@ -33,7 +39,12 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
 					<p>
 						preco/hora <strong>{teacher.cost}</strong>
 					</p>
-					<button type="button">
+					<button
+						type="button"
+						onClick={() => {
+							handleContact(teacher.id, teacher.whatsapp);
+						}}
+					>
 						<img src={WhatsAppIcon} alt="whatsapp" />
 						Entrar em contato
 					</button>
